@@ -40,7 +40,7 @@ module ActiveRecord  # :nodoc:
           # so just pass a nil connection object for the time being.
           ConnectionAdapters::PostGISAdapter.new(nil, logger, conn_params, config)
         else
-          conn = PG.connect(conn_params)
+          conn = PG.connect(conn_params) rescue nil
           ConnectionAdapters::PostGISAdapter.new(conn, logger, conn_params, config)
         end
 
